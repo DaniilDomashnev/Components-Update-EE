@@ -1,185 +1,159 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecrous Engine - Component Update</title>
-    <style>
-        /* Общие стили */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #E0E0E0;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease;
-        }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ecrous Engine - UI Update</title>
+		<link rel="stylesheet" href="style.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="src/EcrousLogo.jpg" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="header-left">
+                    <img class="logo" src="src/EcrousLogo.jpg" alt="EE Logo" style="width:60px;height:60px;">
+					<div>
+						<h1>Ecrous Engine - UI Update</h1>
+						<p class="subtitle">Новые возможности и улучшения в редакторе!</p>
+					</div>
+				</div>
+			</header>
 
-        /* Заголовки */
-        h1, h2 {
-            color: #9B4D96; /* Темно-фиолетовый */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        h3 {
-            color: #D1A1D3; /* Светлый фиолетовый */
-            margin-top: 20px;
-        }
-
-        /* Header */
-        header {
-            background-color: #121212;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease-out;
-        }
-
-        /* Основное содержимое */
-        main {
-            padding: 30px;
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #1C1C1C;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-            animation: slideIn 1s ease-out;
-        }
-
-        /* Стили для списков */
-        ul {
-            list-style-type: none;
-            margin-left: 20px;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-            padding-left: 10px;
-            position: relative;
-        }
-
-        ul li:before {
-            content: "•";
-            color: #9B4D96;
-            font-size: 20px;
-            position: absolute;
-            left: -20px;
-        }
-
-        /* Стили для блоков кода */
-        .code-block {
-            background-color: #2C2C2C;
-            color: #A1A1A1;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
-            margin-top: 20px;
-            overflow-x: auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #121212;
-            color: #E0E0E0;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        /* Эффекты анимации */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Анимации для списка */
-        ul li {
-            opacity: 0;
-            animation: fadeInList 0.5s forwards;
-        }
-
-        ul li:nth-child(odd) {
-            animation-delay: 0.3s;
-        }
-
-        ul li:nth-child(even) {
-            animation-delay: 0.5s;
-        }
-
-        @keyframes fadeInList {
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Ecrous Engine - Component Update</h1>
-</header>
-
-<main>
-    <h2>Обновление: Компоненты</h2>
-    <p>В этом обновлении для "Ecrous Engine" будет добавлена поддержка системы компонентов. Это важное обновление, которое позволит улучшить структуру объектов в движке и даст пользователю возможность добавлять и управлять компонентами объектов в сценах.</p>
-
-    <h3>Основные особенности:</h3>
-    <ul>
-        <li>Добавление, удаление и управление компонентами через контекстное меню.</li>
-        <li>Поддержка различных типов компонентов (например, Transform, Rigidbody, SpriteRenderer).</li>
-        <li>Возможность добавления пользовательских компонентов и их конфигурация.</li>
-    </ul>
-
-    <h3>Пример использования компонента:</h3>
-    <p>Компоненты будут добавляться через контекстное меню, которое будет доступно при правом клике на объект в редакторе. Например, для добавления компонента "Rigidbody" к объекту, пользователь должен будет выбрать пункт "Добавить компонент" и выбрать "Rigidbody".</p>
-
-    <div class="code-block">
-        // Пример скрипта для компонента Rigidbody
-        class Rigidbody {
-            constructor(mass, friction) {
-                this.mass = mass;
-                this.friction = friction;
-            }
-
-            applyForce(force) {
-                // Логика применения силы
-            }
-        }
-    </div>
-
-    <h3>Как это работает:</h3>
-    <p>Каждый объект в сцене может иметь несколько компонентов, которые определяют его поведение, внешний вид и взаимодействие с другими объектами. Например:</p>
-    <ul>
-        <li><strong>Transform</strong> – управление положением, вращением и масштабом объекта.</li>
-        <li><strong>Rigidbody</strong> – добавление физики (масса, силы, столкновения).</li>
-        <li><strong>SpriteRenderer</strong> – отображение изображения объекта на экране.</li>
-    </ul>
-</main>
-    <br><br>
-
-<footer>
-    <p>&copy; 2025 Ecrous Engine. Все права защищены.</p>
-</footer>
-
-</body>
+			<main class="main-grid">
+				<div class="content">
+					<section class="update-section">
+						<h2>Новые возможности редактора для создания UI</h2>
+			<h3>Визуальный редактор интерфейсов</h3>
+			<ul>
+				<li>
+					<strong>Drag-and-drop система</strong>: Пользователи могут
+					перетаскивать элементы UI (кнопки, текстовые поля, панели и т.д.)
+					прямо на сцену.
+				</li>
+				<li>
+					<strong>Редактирование в реальном времени</strong>: Изменения в UI
+					сразу отображаются в редакторе, без необходимости перезапускать
+					проект.
+				</li>
+			</ul>
+			<h3>Библиотека готовых элементов</h3>
+			<ul>
+				<li>
+					Добавлены стандартные элементы UI: кнопки, слайдеры, выпадающие
+					списки, чекбоксы, текстовые поля и другие.
+				</li>
+				<li>
+					Поддержка кастомизации: изменение цвета, шрифтов, размеров и анимаций.
+				</li>
+			</ul>
+			<h3>Адаптивный UI</h3>
+			<ul>
+				<li>
+					Возможность настраивать интерфейс для разных разрешений экранов (PC,
+					мобильные устройства, консоли).
+				</li>
+				<li>
+					Система привязок (anchors) для автоматического масштабирования
+					элементов.
+				</li>
+			</ul>
+			<h3>Анимации и интерактивность</h3>
+			<ul>
+				<li>
+					Встроенные инструменты для создания анимаций (например,
+					появление/исчезновение элементов, плавные переходы).
+				</li>
+				<li>
+					Возможность настраивать реакции на действия пользователя (клики,
+					наведение, ввод текста).
+				</li>
+			</ul>
+			<h3>Интеграция с кодом</h3>
+			<ul>
+				<li>
+					Поддержка скриптов для управления логикой UI (например, обработка
+					нажатий кнопок или динамическое изменение текста).
+				</li>
+				<li>Экспорт UI в виде кода для дальнейшей доработки программистами.</li>
+			</ul>
+			<h3>Поддержка тем и стилей</h3>
+			<ul>
+				<li>
+					Возможность создавать и применять темы для UI (например, светлая и
+					темная тема).
+				</li>
+				<li>Поддержка кастомных стилей для отдельных элементов.</li>
+			</ul>
+			<h3>Тестирование UI</h3>
+			<ul>
+				<li>
+					Встроенный инструмент для тестирования интерфейсов на разных
+					устройствах и разрешениях.
+				</li>
+				<li>
+					Возможность симуляции пользовательских действий (например, клики,
+					свайпы).
+				</li>
+			</ul>
+		</section>
+		</section>
+		<section class="update-section">
+			<h2>Как это улучшит процесс разработки</h2>
+			<ul>
+				<li>
+					<strong>Для дизайнеров</strong>: Не нужно использовать сторонние
+					программы для создания интерфейсов — всё можно сделать прямо в
+					редакторе.
+				</li>
+				<li>
+					<strong>Для разработчиков</strong>: Упрощается процесс интеграции UI в
+					игровую логику, так как всё работает в единой среде.
+				</li>
+				<li>
+					<strong>Для всей команды</strong>: Ускоряется процесс создания и
+					тестирования интерфейсов, что положительно сказывается на сроках
+					разработки.
+				</li>
+			</ul>
+		</section>
+		</section>
+		<section class="update-section">
+			<h2>Пример использования</h2>
+			<ol>
+				<li>Открываете редактор, выбираете элемент UI (например, кнопку).</li>
+				<li>Перетаскиваете её на сцену, настраиваете размер, цвет и текст.</li>
+				<li>Добавляете анимацию появления и настраиваете реакцию на клик.</li>
+				<li>Тестируете интерфейс прямо в редакторе.</li>
+				<li>Экспортируете проект и запускаете его на нужной платформе.</li>
+			</ol>
+		</section>
+		</section>
+		<section class="update-section">
+			<h2>Когда обновление?</h2>
+			<ul>
+				<li>Beta 31.12.2025</li>
+				<li>31 декабря 2025 года</li>
+			</ul>
+		</section>
+			</div>
+				<aside class="card-aside" aria-label="Информация">
+                    <img src="src/Ui Update.png" alt="EE Ui Update Logo" style="width:100%;margin-top:24px;border-radius:8px;">
+					<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+						<strong>Состояние обновления</strong>
+						<span class="small">Beta</span>
+					</div>
+					<hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
+					<p class="small">Коротко: визуальный редактор, библиотека компонентов, адаптивность и анимации — всё готово к интеграции.</p>
+					<div style="margin-top:12px">
+						<button class="btn-gray" style="width:100%">Скачать бета</button>
+					</div>
+				</aside>
+			</main>
+		</div>
+		<footer>
+			<p>&copy; 2025 Ecrous Engine. Все права защищены.</p>
+		</footer>
+		<script src="script.js"></script>
+	</body>
 </html>
